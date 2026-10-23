@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* Tailwind v4 usa prefers-color-scheme por defecto para "dark:". Como el
+   modo oscuro aquí lo activa el admin desde Ajustes (clase .dark en <html>,
+   ver ThemeContext.jsx), no la preferencia del sistema operativo, hay que
+   declarar la variante explícitamente para que responda a la clase. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Fuente */
+  --font-sans: "Poppins", sans-serif;
+
+  /* Colores Primary */
+  --color-primary-50: #f1f6f2;
+  --color-primary-100: #dcebe0;
+  --color-primary-200: #b3d3bb;
+  --color-primary-300: #84b892;
+  --color-primary-400: #549b68;
+  --color-primary-500: #2f7a45;
+  --color-primary-600: #1f5c33;
+  --color-primary-700: #064225;
+  --color-primary-800: #032d18;
+  --color-primary-900: #0a2312;
+
+  /* Colores Gold */
+  --color-gold-400: #f3c94f;
+  --color-gold-500: #e8b923;
+  --color-gold-600: #c99e17;
+
+  /* Fondo de página y de tarjetas/cajas, personalizables desde Ajustes
+     (ver ThemeContext.jsx). Antes cada pantalla tenía su propio gris/blanco
+     casi-idéntico escrito a mano (#fcfdfc, #f1f1f1, #e6e6e6, etc.) -- se
+     consolidó todo en estos dos tokens, igual que se hizo con el verde. */
+  --color-page: #fcfdfc;
+  --color-surface: #ffffff;
+
+  /* Shadow */
+  --shadow-card: 0 2px 10px rgba(15, 51, 25, 0.08);
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased bg-page text-zinc-900;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  /* Consistencia tipográfica: las etiquetas de formulario y encabezados de
+     tabla SIEMPRE son texto fijo de interfaz (nunca datos que escribe el
+     usuario), así que es seguro ponerlos en mayúsculas de forma global en
+     vez de tocar cada archivo uno por uno. */
+  label {
+    @apply uppercase tracking-wide;
+  }
+
+  th {
+    @apply uppercase tracking-wide;
+  }
+}
+
+/* Animaciones del banner superior (franja de anuncios). Se aplican como
+   clase "anim-<nombre>" según lo que elija el admin al crear/editar el
+   banner en el panel administrativo. */
+@keyframes bannerMarquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes bannerPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+@keyframes bannerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes bannerBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.anim-marquee span { animation: bannerMarquee 12s linear infinite; }
+.anim-pulse { animation: bannerPulse 1.8s ease-in-out infinite; }
+.anim-fadeIn { animation: bannerFadeIn 1s ease-in; }
+.anim-bounce { animation: bannerBounce 1.2s ease-in-out infinite; }

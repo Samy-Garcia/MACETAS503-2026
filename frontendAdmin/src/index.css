@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* Poppins: única fuente del panel de administración, en todos sus pesos usados
+   (font-light a font-extrabold) para que las clases de Tailwind rendericen el
+   peso real en vez de que el navegador lo simule (negrita falsa). */
+@import "@fontsource/poppins/300.css";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource/poppins/800.css";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+
+  /* Consistencia tipográfica: las etiquetas de formulario y encabezados de
+     tabla SIEMPRE son texto fijo de interfaz (nunca datos que escribe el
+     usuario), así que es seguro ponerlos en mayúsculas de forma global en
+     vez de tocar cada archivo uno por uno. */
+  label {
+    @apply uppercase tracking-wide;
+  }
+
+  th {
+    @apply uppercase tracking-wide;
+  }
+}
+
+/* Animaciones del banner (mismas que en el frontend cliente), para que la
+   vista previa en vivo del modal de banners se vea igual que en la tienda. */
+@keyframes bannerMarquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes bannerPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+@keyframes bannerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes bannerBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.anim-marquee span { animation: bannerMarquee 12s linear infinite; }
+.anim-pulse { animation: bannerPulse 1.8s ease-in-out infinite; }
+.anim-fadeIn { animation: bannerFadeIn 1s ease-in; }
+.anim-bounce { animation: bannerBounce 1.2s ease-in-out infinite; }
