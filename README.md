@@ -32,6 +32,10 @@ El proyecto está compuesto por **tres aplicaciones independientes** dentro de e
 - Catálogo de macetas, velas y plantas, con variantes (tamaño, color, planta) elegibles por el cliente.
 - Carrito de compras y checkout con cálculo de envío por distancia real (mapa interactivo).
 - Programa de fidelidad: hojas por compra, reseña, referido y cumpleaños; canje de cupones de descuento, envío gratis y productos.
+- Buscador de productos (macetas, velas, plantas, otros y combos) que ignora tildes y mayúsculas.
+- Pago con tarjeta mediante Wompi con 3D Secure, o con la tarjeta guardada en el perfil.
+- Pedidos con número consecutivo (`#0001`, `#0002`…), estados unificados entre tienda y panel, y detección de clientes recurrentes.
+- Foto de perfil con imagen por defecto cuando el usuario no tiene una.
 - Wishlist, reseñas de producto y testimonios en la página de inicio.
 - Cupones y ofertas configurables desde el panel admin.
 - Panel administrativo: inventario (macetas/velas/plantas), órdenes, cupones, ofertas, reportes, ajustes de la tienda (mensaje del banner, carrusel de imágenes del inicio, ubicación y costo de envío).
